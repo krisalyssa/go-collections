@@ -1,0 +1,49 @@
+name: build
+on:
+  merge_group:
+    types:
+      - checks_requested
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+  workflow_dispatch:
+permissions: {}
+jobs:
+  build:
+    # name
+    permissions:
+      contents: read
+    # needs
+    # if
+    runs-on: ubuntu-latest
+    # environment
+    # concurrency
+    # outputs
+    # env
+    # defaults
+    # timeout-minutes
+    # strategy
+    # continue-on-error
+    steps:
+      - name: check out code
+        uses: actions/checkout@v5
+
+      - name: set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '^1.25.1'
+
+      - name: build
+        run: |
+          go build -v
+
+      - name: test
+        run: |
+          go test -v
