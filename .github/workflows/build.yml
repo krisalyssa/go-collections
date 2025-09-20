@@ -30,20 +30,20 @@ jobs:
     # defaults
     # timeout-minutes
     # strategy
-    # continue-on-error    
+    # continue-on-error
     steps:
-    - name: check out code
-      uses: actions/checkout@v5
+      - name: check out code
+        uses: actions/checkout@v5
 
-    - name: set up Go
-      uses: actions/setup-go@v6
-      with:
-        go-version: '^1.25.1'
+      - name: set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: '^1.25.1'
 
-    - name: build
-      run: |
-        go build -v ./...
+      - name: build
+        run: |
+          go build -v
 
-    - name: test
-      run: |
-        go test -v ./...
+      - name: test
+        run: |
+          go test -v
