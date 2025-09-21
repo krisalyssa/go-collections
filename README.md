@@ -5,7 +5,7 @@ Functions for working with collections, inspired by Elixir's Enum module.
 ## `func All`
 
 ```golang
-func All[T any](enumerable []T, fun func(T) bool) bool
+func All[E ~[]I, I any](enumerable E, fun func(I) bool) bool
 ```
 
 Returns `true` if `fun` returns `true` for all items in `enumerable`. If `fun` ever returns `false`, iteration stops immediately and `false` is returned.
@@ -13,7 +13,7 @@ Returns `true` if `fun` returns `true` for all items in `enumerable`. If `fun` e
 ## `func Any`
 
 ```golang
-func Any[T any](enumerable []T, fun func(T) bool) bool
+func Any[E ~[]I, I any](enumerable E, fun func(I) bool) bool
 ```
 
 Returns `true` if `fun` returns `true` for at least one item in `enumerable`. If `fun` ever returns `true`, iteration stops immediately and `true` is returned. In all other cases `false` is returned.
@@ -21,7 +21,7 @@ Returns `true` if `fun` returns `true` for at least one item in `enumerable`. If
 ## `func At`
 
 ```golang
-func At[T ~[]E, E any](enumerable T, index int) E
+func At[E ~[]I, I any](enumerable E, index int) I
 ```
 
 Finds the item at the given `index` (zero-based). A negative `index` can be passed, in which case `index` is counted from the end. For example, `At(enumerable, -1)` finds the last item in `enumerable`.
@@ -31,7 +31,7 @@ If `index` is greater than or equal to the number of items in `enumerable`, the 
 ## `func Filter`
 
 ```golang
-func Filter[T any](enumerable []T, fun func(T) bool) []T
+func Filter[E ~[]I, I any](enumerable E, fun func(I) bool) E
 ```
 
 Returns a list of only those elements in `enumerable` for which `fun` returns a truthy value.
@@ -41,7 +41,7 @@ See also `Reject` which discards all elements where the function returns a truth
 ## `func Map`
 
 ```golang
-func Map[T any](enumerable []T, fun func(T) bool) []T
+func Map[E1 ~[]I1, I1, I2 any](enumerable E1, fun func(I1) I2) []I2
 ```
 
 Returns a list where each element is the result of invoking `fun` on each corresponding element of `enumerable`.
@@ -53,7 +53,7 @@ _TODO: Define a different implementation for maps, which passes the key-value pa
 ## `func Reduce`
 
 ```golang
-func Reduce[T1, T2 any](enumerable []T1, initial T2, fun func(T1, T2) T2) T2
+func Reduce[E ~[]I, I, A any](enumerable E, initial A, fun func(I, A) A) A
 ```
 
 Invokes `fun` for each element in `enumerable` with an accumulator.
@@ -63,7 +63,7 @@ The initial value of the accumulator is `initial`. The result returned by `fun` 
 ## `func Reject`
 
 ```golang
-func Reject[T any](enumerable []T, fun func(T) bool) []T
+func Reject[E ~[]I, I any](enumerable E, fun func(I) bool) E
 ```
 
 Returns a list of only those elements in `enumerable` for which `fun` does not return a truthy value.

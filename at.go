@@ -1,6 +1,6 @@
 package gocollections
 
-func At[T ~[]E, E any](enumerable T, index int) E {
+func At[E ~[]I, I any](enumerable E, index int) I {
 	count := len(enumerable)
 
 	if index >= 0 {
