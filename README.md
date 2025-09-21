@@ -18,6 +18,16 @@ func Any[T any](enumerable []T, fun func(T) bool) bool
 
 Returns `true` if `fun` returns `true` for at least one item in `enumerable`. If `fun` ever returns `true`, iteration stops immediately and `true` is returned. In all other cases `false` is returned.
 
+## `func At`
+
+```golang
+func At[T ~[]E, E any](enumerable T, index int) E
+```
+
+Finds the item at the given `index` (zero-based). A negative `index` can be passed, in which case `index` is counted from the end. For example, `At(enumerable, -1)` finds the last item in `enumerable`.
+
+If `index` is greater than or equal to the number of items in `enumerable`, the last item is returned. If `index` is negative and its absolute value is greater than the number of items in `enumerable`, the first item is returned.
+
 ## `func Filter`
 
 ```golang
