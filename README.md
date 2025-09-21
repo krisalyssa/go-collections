@@ -28,6 +28,22 @@ Finds the item at the given `index` (zero-based). A negative `index` can be pass
 
 If `index` is greater than or equal to the number of items in `enumerable`, the last item is returned. If `index` is negative and its absolute value is greater than the number of items in `enumerable`, the first item is returned.
 
+## `func Count`
+
+```golang
+func Count[E ~[]any](enumerable E) int
+```
+
+Returns the count of items in `enumerable`.
+
+## `func CountWhere`
+
+```golang
+func CountWhere[E ~[]I, I any](enumerable E, fun func(I) bool) int
+```
+
+Returns the count of items in `enumerable` for which `fun` returns `true`.
+
 ## `func Filter`
 
 ```golang
