@@ -2,6 +2,22 @@
 
 Functions for working with collections, inspired by Elixir's Enum module.
 
+## `func All`
+
+```golang
+func All[T any](enumerable []T, fun func(T) bool) bool
+```
+
+Returns `true` if `fun` returns `true` for all items in `enumerable`. If `fun` ever returns `false`, iteration stops immediately and `false` is returned.
+
+## `func Any`
+
+```golang
+func Any[T any](enumerable []T, fun func(T) bool) bool
+```
+
+Returns `true` if `fun` returns `true` for at least one item in `enumerable`. If `fun` ever returns `true`, iteration stops immediately and `true` is returned. In all other cases `false` is returned.
+
 ## `func Filter`
 
 ```golang
