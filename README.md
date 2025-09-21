@@ -76,6 +76,14 @@ Invokes `fun` for each element in `enumerable` with an accumulator.
 
 The initial value of the accumulator is `initial`. The result returned by `fun` is used as the accumulator for the next iteration. The function returns the last accumulator.
 
+## `func ReduceWhile`
+
+```golang
+func ReduceWhile[E ~[]I, I, A any](enumerable E, initial A, fun func(I, A) (A, bool)) A
+```
+
+Reduces `enumerable` until `fun` returns `(_, false)` or every item has been visited.
+
 ## `func Reject`
 
 ```golang
