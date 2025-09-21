@@ -5,6 +5,6 @@ package gocollections
 
 // declare type for filtering function?
 
-func Reject[T any](enumerable []T, fun func(T) bool) []T {
-	return Filter(enumerable, func(item T) bool { return !fun(item) })
+func Reject[E ~[]I, I any](enumerable E, fun func(I) bool) E {
+	return Filter(enumerable, func(item I) bool { return !fun(item) })
 }

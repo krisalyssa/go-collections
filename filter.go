@@ -5,8 +5,8 @@ package gocollections
 
 // declare type for filtering function?
 
-func Filter[T any](enumerable []T, fun func(T) bool) []T {
-	var retval []T
+func Filter[E ~[]I, I any](enumerable E, fun func(I) bool) E {
+	var retval E
 	for _, item := range enumerable {
 		if fun(item) {
 			retval = append(retval, item)

@@ -5,7 +5,7 @@ package gocollections
 
 // declare type for reducing function?
 
-func Reduce[T1, T2 any](enumerable []T1, initial T2, fun func(T1, T2) T2) T2 {
+func Reduce[E ~[]I, I, A any](enumerable E, initial A, fun func(I, A) A) A {
 	accumulator := initial
 	for _, item := range enumerable {
 		accumulator = fun(item, accumulator)

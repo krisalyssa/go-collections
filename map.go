@@ -5,8 +5,8 @@ package gocollections
 
 // declare type for mapping function?
 
-func Map[T1, T2 any](enumerable []T1, fun func(T1) T2) []T2 {
-	retval := make([]T2, len(enumerable))
+func Map[E1 ~[]I1, I1, I2 any](enumerable E1, fun func(I1) I2) []I2 {
+	retval := make([]I2, len(enumerable))
 	for index, item := range enumerable {
 		retval[index] = fun(item)
 	}

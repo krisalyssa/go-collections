@@ -2,7 +2,7 @@ package gocollections
 
 // declare type for filtering function?
 
-func All[T any](enumerable []T, fun func(T) bool) bool {
+func All[E ~[]I, I any](enumerable E, fun func(I) bool) bool {
 	var retval bool = true
 	for _, item := range enumerable {
 		if !fun(item) {
